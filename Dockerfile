@@ -9,3 +9,4 @@ COPY . /var/www/html/
 # Beri kebenaran folder
 RUN chown -R www-data:www-data /var/www/html
 
+EXPOSE 80
