@@ -1,23 +1,16 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
 # 1. Pasang extension mysqli
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-# 2. SELESAIKAN RALAT MPM (Punca Crash)
-# Kita paksa disable mpm_event dan enable mpm_prefork (standard untuk PHP)
-RUN a2dismod mpm_event || true && a2enmod mpm_prefork
-
-# 3. Tukar port Apache ke 8080 (Railway Friendly)
-RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
-
-# 4. Salin fail & Permission
+# 2. Salin fail kod
 COPY . /var/www/html/
-RUN chown -R www-data:www-data /var/www/html
+WORKDIR /var/www/html
 
-# 5. Setting Environment Railway
+# 3. Setting Environment Railway (Guna port dinamik)
 ENV PORT 8080
 EXPOSE 8080
 
-# 6. Jalankan Apache
-CMD ["apache2-foreground"]
- 
+# 4. Jalankan PHP Built-in Server
+# Dia akan dengar pada port yang Railway bagi
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT} -t ."]
