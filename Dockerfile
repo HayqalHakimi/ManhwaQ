@@ -1,17 +1,21 @@
 FROM php:8.2-apache
 
-# Pasang extension mysqli
+# 1. Pasang extension mysqli
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-# Salin semua fail kod ke dalam server
+# 2. Tukar port Apache kepada 8080 (Railway suka port ni)
+# Kita guna 8080 sebab ia port standard yang tak konflik dengan root
+RUN sed -i 's/80/8080/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
+
+# 3. Salin fail kod
 COPY . /var/www/html/
 
-# Beri kebenaran folder
+# 4. Beri kebenaran folder
 RUN chown -R www-data:www-data /var/www/html
 
-# Guna port 80 (Railway perlukan ini)
-ENV PORT 80
-EXPOSE 80
+# 5. Beritahu Railway kita guna 8080
+ENV PORT 8080
+EXPOSE 8080
 
-# Arahan untuk pastikan Apache terus berjalan
+# 6. Jalankan Apache secara direct
 CMD ["apache2-foreground"]
