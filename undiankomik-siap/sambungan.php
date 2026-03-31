@@ -1,15 +1,15 @@
 <?php
+$host = "hopper.proxy.rlwy.net";
+$user = "root";
+$pass = "UIYwrnwilzUYNtdqwcAospnHlevSgAZE";
+$db   = "railway";
+$port = "27613";
 
-    $nama_database = "undiankomik";
+$conn = mysqli_connect($host, $user, $pass, $db, $port);
 
-
-
-    $sambungan = mysqli_connect("localhost", "root", "", $nama_database);
-
-    if ( !$sambungan ) {
-
-          die("sambungan gagal");
-
-    } 
-
-?>
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+    }
+    // echo "Berjaya sambung ke database Railway!";
+    ?>
+    
