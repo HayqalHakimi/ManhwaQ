@@ -1,6 +1,18 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+}
+
 body {
     background-image: url(imej/back.jpg);
     margin: 0px;
+    font-family: Verdana, sans-serif;
 }
 
 h5 {
@@ -55,7 +67,8 @@ figcaption {
 
 img.home {
     border: 2px solid black;
-    width: 230px;
+    width: min(230px, 100%);
+    max-width: 100%;
     box-shadow: 15px 15px 6px 0px rgba(96, 96, 96, 0.7);
 }
 
@@ -117,4 +130,45 @@ li:hover li {
     color: #001364;                  /* Warna biru gelap */
     background-color: #fcfcfc;       /* Latar belakang sedikit cerah */
     border-radius: 8px;              /* Bucu sedikit bulat */
+}
+
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 12px 0;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 12px 0;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    ul li {
+        float: none;
+    }
+
+    ul li a {
+        width: auto;
+        margin: 4px 6px 4px 0px;
+        padding: 8px 10px;
+    }
+
+    .gambar {
+        gap: 16px;
+        padding: 0 10px;
+    }
+
+    figcaption {
+        font-size: 13px;
+        padding: 8px;
+    }
 }

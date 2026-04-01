@@ -5,13 +5,16 @@ button {
     text-align: center;
     color: darkolivegreen;
     
-    width: 110px;
-    padding : 7px 8px 7px 32px;
+    min-width: 110px;
+    width: auto;
+    padding: 10px 14px;
     border: 1px solid darkolivegreen;
     border-radius: 7px;
     margin-top: 8px;
     background-position: 8px;
     background-repeat: no-repeat;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 button.login {
@@ -45,3 +48,13 @@ button.papar {
 button.cari {
     background-image: url(imej/search.png);
 }
+
+@media (max-width: 480px) {
+    button {
+        width: 100%;
+        max-width: 320px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+

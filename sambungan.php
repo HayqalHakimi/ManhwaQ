@@ -1,15 +1,22 @@
 <?php
+ob_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $host = "hopper.proxy.rlwy.net";
 $user = "root";
 $pass = "UIYwrnwilzUYNtdqwcAospnHlevSgAZE";
 $db   = "railway";
 $port = "27613";
 
-$conn = mysqli_connect($host, $user, $pass, $db, $port);
+$sambungan = mysqli_connect($host, $user, $pass, $db, $port);
+$conn = &$sambungan;
 
-if (!$conn) {
+if (!$sambungan) {
     die("Connection failed: " . mysqli_connect_error());
-    }
-    // echo "Berjaya sambung ke database Railway!";
-    ?>
+}
+
+mysqli_set_charset($sambungan, 'utf8mb4');
     

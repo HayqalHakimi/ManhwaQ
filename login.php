@@ -44,16 +44,21 @@
             }
         }
 
-        if ($jumpa == TRUE)
-            if ($_SESSION["status"] == "pengundi")
+        if ($jumpa == TRUE) {
+            if ($_SESSION["status"] == "pengundi") {
                 header("Location: index.php");
-            else if ($_SESSION["status"] == "admin")
-                header("Location: calon_senarai.php"); 
+                exit();
+            } else if ($_SESSION["status"] == "admin") {
+                header("Location: calon_senarai.php");
+                exit();
+            }
+        }
         
         echo "<script>alert('kesalahan pada username atau password');</script>"; 
     }      
 ?>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="button.css">
 <link rel="stylesheet" href="borang.css">
     

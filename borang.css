@@ -76,3 +76,32 @@ td:nth-child(1) {
 
     width: 200px;
 }
+
+@media (max-width: 768px) {
+    h3 {
+        width: auto;
+        margin: 20px 10px 0;
+    }
+
+    form {
+        width: calc(100% - 24px);
+        padding: 16px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="file"],
+    select {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    td:nth-child(1) {
+        width: auto;
+        display: block;
+    }
+}
