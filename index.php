@@ -1,8 +1,8 @@
 <?php
+error_reporting(0);
 
-ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 
     include("sambungan.php");
     include("pengundi_menu.php");
@@ -26,6 +26,7 @@ ini_set('display_errors', 1);
     }
 
     echo "<link rel='stylesheet' href='button.css'>";
+    echo "<style>@media (max-width: 768px) { body { min-height: 100vh; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; } main { display: flex; flex-direction: column; align-items: center; } nav ul li a { padding: 12px 16px; font-size: 16px; } div.gambar { width: 90%; } figure { width: auto; } img.home { width: 90%; max-width: 320px; } }</style>";
     echo "<main>";
 
     // 2. AMBIL SENARAI CALON DARI DATABASE
